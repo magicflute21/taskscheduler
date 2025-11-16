@@ -1,9 +1,19 @@
+import useTaskScheduler from "../hooks/useTaskScheduler";
+import useSchedulerStore from "../stores/useSchedulerStore"
 
-function TaskScheduler() {
+const TaskScheduler = () => {
+  const { activeViewQuarter, activeViewYear, nextQuarter, prevQuarter } = useSchedulerStore();
+  const { quarterData } = useTaskScheduler();
+
+  console.log('quarterData', quarterData);
 
   return (
     <>
-      <h1>Vite + React</h1>
+      <div className="">
+        <button onClick={prevQuarter}>prev</button>
+        <button onClick={nextQuarter}>next</button>
+      </div>
+      <h1>Quarter {activeViewQuarter}, {activeViewYear}</h1>
     </>
   )
 }
