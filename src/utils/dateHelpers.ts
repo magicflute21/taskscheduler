@@ -1,4 +1,4 @@
-import { getISOWeeksInYear, getMonth, getQuarter, getYear } from "date-fns";
+import { format, getISOWeeksInYear, getMonth, getQuarter, getYear, isValid, isWithinInterval, parseISO } from "date-fns";
 
 const getDateInfo = (date: Date) => {
   const year = getYear(date);
@@ -33,4 +33,11 @@ const getFirstDayOfMonth = (year: number, firstMonth: number) => {
   return new Date(year, firstMonth, 1);
 }
 
-export { getDateInfo, getQuarterMonths, monthNameMap, getFirstDayOfMonth };
+const parseToEstonianDate = (ISOdate: string) => {
+  if (!ISOdate) return '';
+  const parsed = parseISO(ISOdate);
+  if (!isValid(parsed)) return '';
+  return format(parsed, 'dd.MM.yyyy');
+}
+
+export { getDateInfo, getQuarterMonths, monthNameMap, getFirstDayOfMonth, parseToEstonianDate };

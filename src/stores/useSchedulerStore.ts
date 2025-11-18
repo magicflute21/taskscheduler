@@ -6,6 +6,8 @@ interface SchedulerState {
   activeViewYear: number;
   nextQuarter: () => void;
   prevQuarter: () => void;
+  showAddTask: boolean;
+  setShowAddTask: (value: boolean) => void
 }
 
 const useSchedulerStore = create<SchedulerState>((set) => {
@@ -40,7 +42,10 @@ const useSchedulerStore = create<SchedulerState>((set) => {
         activeViewQuarter: state.activeViewQuarter - 1,
         activeViewYear: state.activeViewYear
       };
-    })
+    }),
+
+    showAddTask: false,
+    setShowAddTask: (showAddTask) => set({ showAddTask })
   };
 });
 
