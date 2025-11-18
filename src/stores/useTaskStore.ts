@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { tasks } from "../dummydata/tasks";
 
-type Task = {
+export type Task = {
   id: number
   name: string
   startDate: string

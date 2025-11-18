@@ -1,11 +1,21 @@
+import { twMerge } from 'tailwind-merge';
 import useTaskScheduler from "../hooks/useTaskScheduler";
-import useTaskStore from "../stores/useTaskStore";
+import useTaskStore, { type Task } from "../stores/useTaskStore";
 import { parseToEstonianDate } from "../utils/dateHelpers";
-
+import { getTaskWeekNumber, getTaskYear } from "../utils/taskHelpers";
+import useSchedulerStore from '../stores/useSchedulerStore';
 
 const ScheduleTable = () => {
   const { quarterData } = useTaskScheduler();
   const { tasks } = useTaskStore();
+  const { activeViewYear } = useSchedulerStore();
+
+  const isActiveTask = (task: Task, week: number) => {
+    const taskWeeks = getTaskWeekNumber(task);
+    const taskYears = getTaskYear(task);
+
+    return taskYears.includes(activeViewYear) && taskWeeks.includes(week);
+  }
 
   return (
     <table className="w-full">
@@ -34,7 +44,11 @@ const ScheduleTable = () => {
             <td className="border border-cyan-600 text-cyan-800 p-1.5">{parseToEstonianDate(task.startDate)}</td>
             <td className="border border-cyan-600 text-cyan-800 p-1.5">{parseToEstonianDate(task.endDate)}</td>
             {quarterData.map((q) => q.weekNumbers.map((week) => (
-              <td key={week} className="border border-cyan-600 text-cyan-800 p-2"></td>
+              <td key={week} className={twMerge(
+                "border border-cyan-600 text-cyan-800 p-2 ",
+                isActiveTask(task, week) ? 'bg-slate-300' : ''
+              )}>
+              </td>
             )))}
           </tr>
         ))}
