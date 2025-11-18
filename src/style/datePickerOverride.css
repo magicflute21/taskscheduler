@@ -1,0 +1,6 @@
+.rdp-range_start button,
+.rdp-range_end button {
+  border-style: none !important;
+  color: black !important;
+  background-color: oklch(87.9% 0.169 91.605) !important;
+}

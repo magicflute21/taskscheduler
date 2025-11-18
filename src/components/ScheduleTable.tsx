@@ -1,9 +1,10 @@
 import { twMerge } from 'tailwind-merge';
 import useTaskScheduler from "../hooks/useTaskScheduler";
 import useTaskStore, { type Task } from "../stores/useTaskStore";
-import { parseToEstonianDate } from "../utils/dateHelpers";
+import { isoToDisplay } from "../utils/dateHelpers";
 import { getTaskWeekNumber, getTaskYear } from "../utils/taskHelpers";
 import useSchedulerStore from '../stores/useSchedulerStore';
+import '../style/datePickerOverride.css';
 
 const ScheduleTable = () => {
   const { quarterData } = useTaskScheduler();
@@ -41,8 +42,8 @@ const ScheduleTable = () => {
         {tasks.map((task) => (
           <tr key={task.id}>
             <td className="border border-cyan-600 text-cyan-800 p-1.5 font-medium">{task.name}</td>
-            <td className="border border-cyan-600 text-cyan-800 p-1.5">{parseToEstonianDate(task.startDate)}</td>
-            <td className="border border-cyan-600 text-cyan-800 p-1.5">{parseToEstonianDate(task.endDate)}</td>
+            <td className="border border-cyan-600 text-cyan-800 p-1.5">{isoToDisplay(task.startDate)}</td>
+            <td className="border border-cyan-600 text-cyan-800 p-1.5">{isoToDisplay(task.endDate)}</td>
             {quarterData.map((q) => q.weekNumbers.map((week) => (
               <td key={week} className={twMerge(
                 "border border-cyan-600 text-cyan-800 p-2 ",

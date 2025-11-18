@@ -1,23 +1,15 @@
-import { CalendarPlus } from 'lucide-react';
 import useSchedulerStore from "../stores/useSchedulerStore"
 import ScheduleTable from "./ScheduleTable";
+import AddTaskForm from './AddTaskForm';
 
 const TaskScheduler = () => {
-  const { activeViewQuarter, activeViewYear, nextQuarter, prevQuarter, setShowAddTask } = useSchedulerStore();
+  const { activeViewQuarter, activeViewYear, nextQuarter, prevQuarter } = useSchedulerStore();
 
   return (
     <div className="min-h-screen p-8">
       <div className="max-w-7xl mx-auto mb-8">
         <div className="flex items-center mb-6 justify-end">
-          <button
-            onClick={() => setShowAddTask(true)}
-            className="px-6 py-2 bg-amber-200 hover:bg-amber-300 rounded transition font-medium cursor-pointer group"
-          >
-            <div className='flex items-center justify-center gap-1'>
-              <CalendarPlus size={22} className="transition-transform duration-100 ease-out group-hover:scale-102" />
-              <div className="ml-1 transition-transform duration-100 ease-out group-hover:scale-102">Add Task</div>
-            </div>
-          </button>
+          <AddTaskForm />
         </div>
       </div>
 

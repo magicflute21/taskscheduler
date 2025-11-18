@@ -33,11 +33,16 @@ const getFirstDayOfMonth = (year: number, firstMonth: number) => {
   return new Date(year, firstMonth, 1);
 }
 
-const parseToEstonianDate = (ISOdate: string) => {
+const isoToDisplay = (ISOdate: string) => {
   if (!ISOdate) return '';
   const parsed = parseISO(ISOdate);
   if (!isValid(parsed)) return '';
   return format(parsed, 'dd.MM.yyyy');
 }
 
-export { getDateInfo, getQuarterMonths, monthNameMap, getFirstDayOfMonth, parseToEstonianDate };
+const dateToIso = (date: Date | null | undefined) => {
+  if (!date) return '';
+  return format(date, 'yyy-MM-dd');
+}
+
+export { getDateInfo, getQuarterMonths, monthNameMap, getFirstDayOfMonth, isoToDisplay, dateToIso };

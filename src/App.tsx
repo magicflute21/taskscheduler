@@ -1,7 +1,6 @@
-import './App.css'
 import TaskScheduler from './components/TaskScheduler'
 
-function App() {
+const App = () => {
 
   return (
     <TaskScheduler />
