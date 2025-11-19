@@ -54,7 +54,7 @@ const AddTaskForm = () => {
     <>
       <button
         onClick={openForm}
-        className="px-6 py-2 bg-amber-300 hover:bg-amber-400 rounded transition font-medium cursor-pointer group"
+        className="px-6 py-2 bg-amber-300 hover:bg-amber-200 rounded transition font-medium cursor-pointer group"
       >
         <div className='flex items-center justify-center gap-1'>
           <CalendarPlus size={22} className="transition-transform duration-100 ease-out group-hover:scale-102" />

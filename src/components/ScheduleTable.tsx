@@ -47,7 +47,7 @@ const ScheduleTable = () => {
             {quarterData.map((q) => q.weekNumbers.map((week) => (
               <td key={week} className={twMerge(
                 "border border-cyan-600 text-cyan-800 p-2 ",
-                isActiveTask(task, week) ? 'bg-slate-300' : ''
+                isActiveTask(task, week) ? 'bg-slate-300 shadow-inner border-slate-400 ' : ''
               )}>
               </td>
             )))}
