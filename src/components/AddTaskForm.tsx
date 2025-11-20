@@ -98,18 +98,20 @@ const AddTaskForm = () => {
                         components={{
                           NextMonthButton: (props) => {
                             return (
-                              <ChevronRight
-                                {...props}
-                                className={`w-5 h-5 text-cyan-800 mx-2 cursor-pointer`}
-                              />
+                              <button {...props} type="button">
+                                <ChevronRight
+                                  className={`w-5 h-5 text-cyan-800 mx-2 cursor-pointer`}
+                                />
+                              </button>
                             )
                           },
                           PreviousMonthButton: (props) => {
                             return (
-                              <ChevronLeft
-                                {...props}
-                                className={`w-5 h-5 text-cyan-800 mx-2 cursor-pointer`}
-                              />
+                              <button {...props} type="button">
+                                <ChevronLeft
+                                  className={`w-5 h-5 text-cyan-800 mx-2 cursor-pointer`}
+                                />
+                              </button>
                             )
                           },
                         }}

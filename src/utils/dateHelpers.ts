@@ -1,4 +1,4 @@
-import { format, getISOWeeksInYear, getMonth, getQuarter, getYear, isValid, isWithinInterval, parseISO } from "date-fns";
+import { format, getISOWeeksInYear, getMonth, getQuarter, getYear, isValid, parseISO } from "date-fns";
 
 const getDateInfo = (date: Date) => {
   const year = getYear(date);
